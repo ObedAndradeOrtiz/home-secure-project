@@ -19,15 +19,8 @@ use App\Livewire\PanelInicial;
 Route::get('/', function () {
     return view('welcome');
 });
-/** DASHBOARD*/
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified'
-// ])->group(function () {
-//     Route::get('/dashboard',PanelInicial::class)->name('dashboard');
-// });
 
+/** DASHBOARD*/
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -37,15 +30,8 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/historial', function () {
-        return view('historial');
-    })->name('historial');
-});
+
+/**ADMINISTRADOR */
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -55,5 +41,17 @@ Route::middleware([
         return view('administrador');
     })->name('administrador');
 });
+
+/**HISTORIAL */
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/historial', function () {
+        return view('historial');
+    })->name('historial');
+});
+
 
 
